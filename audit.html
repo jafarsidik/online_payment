@@ -4,16 +4,15 @@
     <meta charset="utf-8">
     <title>对账审计</title>
 
-    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <style>
       body {
-      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      padding-top: 60px;
       }
     </style>
-    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-
 
     <body>
 
@@ -42,18 +41,18 @@
 
         <div class="hero-unit">
           <h1>对账审计</h1>
+          <br/>
           <p>系统每日自动对账审计，同时点击按钮提供手动对账查询功能</p>
-          <p>
-            <a class="btn btn-primary btn-large" id="audit">
-              对账
-            </a>
-          </p>
-          <div id="result">
-            <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
-            <!-- <h4>Success!</h4> -->
-            <!-- Audit succesfully! -->
-          </div>
+          <br/>
+          <a class="btn btn-primary btn-large" id="audit">
+            对账
+          </a>
+
         </div>
+
+        <div id="result"><table class="table" id="order_table">
+
+        </table></div>
 
       </div> <!-- /container -->
       <script type="text/javascript" src="js/store.js"></script>
@@ -61,7 +60,7 @@
       <script type="text/javascript">
 
         jQuery('#audit').click(function() {
-            jQuery('#result').addClass("alert alert-block");
+            // jQuery('#result').addClass("alert alert-block");
             auditor_inspect();
         });
 

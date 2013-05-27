@@ -49,24 +49,33 @@ function audit_check(data, status, xhr) {
     if (data['status'] != 'OK')
         return;
 
-    jQuery("#result").empty();
+    jQuery("#order_table").empty();
+    jQuery("#result").addClass("well");
+
     var id, html;
+
     if (data['data'].length > 0) {
+        html = "<caption><h3>出错账单信息表</h3></caption><tr><th>出错账单号</th><th>账单金额</th><th>买家实际所付金额</th></tr>";
+        jQuery("#order_table").addClass("table-hover");
+        jQuery("#order_table").append(html);
         for (id in data['data']) {
-            if (data['data'][id]['price'] != data['data'][id]['money']) {
-                html = "<p> 订单号 " + data['data'][id]['order_id'] + " 出现错误</p>";
-                if (data['data'][id]['price'] - data['data'][id]['money'] < 0) {
-                    html += "<p> 买家付钱 " + data['data'][id]['price'] + " 少于订单金额 " +
-                        data['data'][id]['money'] + "</p>";
-                }
-                else {
-                    html += "<p> 买家付钱 " + data['data'][id]['price'] + " 多于订单金额 " +
-                        data['data'][id]['money'] + "</p>";
-                }
-            }
 
+            html = "<tr class='warning'><td>" + data['data'][id]['order_id'] + "</td><td>" + data['data'][id]['money'] +
+                "</td><td>" + data['data'][id]['price'] + "</td></tr>";
 
-            jQuery('#result').append(html);
+            // if (data['data'][id]['price'] != data['data'][id]['money']) {
+            //     html = "<p> 订单号 " + data['data'][id]['order_id'] + " 出现错误</p>";
+            //     if (data['data'][id]['price'] - data['data'][id]['money'] < 0) {
+            //         html += "<p> 买家付钱 " + data['data'][id]['price'] + " 少于订单金额 " +
+            //             data['data'][id]['money'] + "</p>";
+            //     }
+            //     else {
+            //         html += "<p> 买家付钱 " + data['data'][id]['price'] + " 多于订单金额 " +
+            //             data['data'][id]['money'] + "</p>";
+            //     }
+            // }
+
+            jQuery('#order_table').append(html);
             // var html = "<p>Price is " + data['data'][id]['price'] +
             //         "</p><p>Money is " + data['data'][id]['money'] + "</p>" +
             //         "<p> Order Id is" + data['data'][id]['order_id'] + "</p>";
@@ -75,7 +84,7 @@ function audit_check(data, status, xhr) {
     }
     else {
         html = "耶！没有错误。";
-        jQuery('#result').append(html);
+        jQuery('#order_table').append(html);
     }
 
 }
