@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>home</title>
+
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      body {
+      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+
+    <body>
+
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="./index.html">A4</a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="./audit.html">对账审计</a></li>
+                <li><a href="./complain.html">处理投诉</a></li>
+                <li><a href="./get_log.html">提取日志</a></li>
+                <li><a href="./inquery.html">查询</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-unit">
+          <h1>Module 4</h1>
+          <h2>Account Reconciliation and Audit</h2>
+          <p>
+            Module 4: Account Reconciliation and Audit Allow auditors
+            to run account reconciliation and audits with the
+            transaction flow recorded in the database when
+            transactions are completed. The system will generate the
+            reconciliation data list in a proper form of last day
+            (0:00 – 24:00) in a fixed time (e.g. 1:00am) every
+            day. The list should include the order number, buyer and
+            seller IDs, total amount, order status, and trade time of
+            each transaction. In the event of an error or something to
+            need double check, it should be logged at once, and
+            auditors should be warned. The interface of this module
+            should be well designed.
+          </p>
+
+          <p> <a class="btn btn-primary btn-large inline"
+                 href="./audit.html">对账审计 </a> </p>
+          <p> <a class="btn btn-primary btn-large inline"
+                 href="./complain.html">处理投诉 </a> </p>
+          <p> <a class="btn btn-primary btn-large inline"
+                 href="./get_log.html">提取日志 </a> </p>
+          <p> <a class="btn btn-primary btn-large inline"
+                 href="./inquery.html">查询 </a> </p>
+
+        </div>
+
+
+
+      </div> <!-- /container -->
+
+    </body>
+</html>
