@@ -23,7 +23,7 @@ function die_with_error($error) {
 
 $hostname = 'localhost';
 $username = 'jeremy';
-$password = 'who dare see my password, wanna die?';
+$password = 'bx';
 $dbname = 'SE';
 
 mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());
