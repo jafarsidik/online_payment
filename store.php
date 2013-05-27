@@ -31,7 +31,8 @@ mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
 $query = "select final_price as price, money_amount as money, ordered.order_id from ordered,
-payment where ordered.order_id = payment.order_id;";
+payment where ordered.order_id = payment.order_id and payment.status = 'succeed';";
+
 $result = mysql_query($query);
 
 if (! $result)

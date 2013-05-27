@@ -48,28 +48,34 @@ function auditor_inspect() {
 function audit_check(data, status, xhr) {
     if (data['status'] != 'OK')
         return;
-    // console.log(data);
+
     jQuery("#result").empty();
     var id, html;
-    for (id in data['data']) {
-        if (data['data'][id]['price'] != data['data'][id]['money']) {
-            html = "<p> 订单号 " + data['data'][id]['order_id'] + " 出现错误</p>";
-            if (data['data'][id]['price'] - data['data'][id]['money'] < 0) {
-                html += "<p> 买家付钱 " + data['data'][id]['price'] + " 少于订单金额 " +
-                    data['data'][id]['money'] + "</p>";
+    if (data['data'].length > 0) {
+        for (id in data['data']) {
+            if (data['data'][id]['price'] != data['data'][id]['money']) {
+                html = "<p> 订单号 " + data['data'][id]['order_id'] + " 出现错误</p>";
+                if (data['data'][id]['price'] - data['data'][id]['money'] < 0) {
+                    html += "<p> 买家付钱 " + data['data'][id]['price'] + " 少于订单金额 " +
+                        data['data'][id]['money'] + "</p>";
+                }
+                else {
+                    html += "<p> 买家付钱 " + data['data'][id]['price'] + " 多于订单金额 " +
+                        data['data'][id]['money'] + "</p>";
+                }
             }
-            else {
-                html += "<p> 买家付钱 " + data['data'][id]['price'] + " 多于订单金额 " +
-                    data['data'][id]['money'] + "</p>";
-            }
+
+
+            jQuery('#result').append(html);
+            // var html = "<p>Price is " + data['data'][id]['price'] +
+            //         "</p><p>Money is " + data['data'][id]['money'] + "</p>" +
+            //         "<p> Order Id is" + data['data'][id]['order_id'] + "</p>";
+            // jQuery('#result').append(html);
         }
-
-
+    }
+    else {
+        html = "耶！没有错误。";
         jQuery('#result').append(html);
-        // var html = "<p>Price is " + data['data'][id]['price'] +
-        //         "</p><p>Money is " + data['data'][id]['money'] + "</p>" +
-        //         "<p> Order Id is" + data['data'][id]['order_id'] + "</p>";
-        // jQuery('#result').append(html);
     }
 
 }
