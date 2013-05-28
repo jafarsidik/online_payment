@@ -1,6 +1,6 @@
 function query_log(date) {
 
-    var url = './query_log.php';
+    var url = './get_log.php';
     var parameter = {date: date};
 
     jQuery.ajax({
@@ -14,6 +14,7 @@ function query_log(date) {
 function get_log(data, status, xhr) {
     if (data['status'] != 'OK')
         return;
+
 
     // jQuery("#result").empty();
     var id, html;
