@@ -16,7 +16,6 @@ function audit_check(data, status, xhr) {
 
     jQuery("#order_table").empty();
     jQuery("#result").addClass("well");
-
     var id, html;
 
     if (data['data'].length > 0) {
@@ -35,8 +34,9 @@ function audit_check(data, status, xhr) {
         }
     }
     else {
-        html = "<h3>耶！没有错误。</h3>";
-        jQuery('#order_table').append(html);
+        html = "<caption><h3>审计通过</h3></caption>";
+        // jQuery("#log_table").addClass("table-hover");
+        jQuery("#log_table").append(html);
     }
 
 }

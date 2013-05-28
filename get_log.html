@@ -45,9 +45,9 @@
           <p>选择您想要的日期</p>
           <p>
             <label> Choose a date from the
-              <input type="date" />
+              <input type="date" id="log_date"/>
             </label>
-            <button class="btn btn-large btn-primary" type="button" id="log">提 交</button>
+            <button class="btn btn-large btn-primary" type="button" id="log">提交</button>
           </p>
 
           <div class="alert alert-success">
@@ -71,8 +71,9 @@
       <script type="text/javascript">
 
         jQuery('#log').click(function() {
-            // jQuery('#result').addClass("alert alert-block");
-            query_log();
+            var log_date = jQuery("#log_date").val();
+
+            query_log(log_date);
         });
 
       </script>

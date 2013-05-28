@@ -8,6 +8,8 @@ function die_with_error($error) {
   die(json_encode($ret));
 }
 
+$date = $_GET["date"];
+
 $hostname = 'localhost';
 $username = 'jeremy';
 $password = 'bbcc';
@@ -18,7 +20,10 @@ mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
 
-$query = "SELECT * FROM payment WHERE finished_date = '2013-5-27';";
+$query = sprintf("SELECT * FROM payment WHERE finished_date = '%s';",
+				 mysql_real_escape_string($date));
+
+/* $query = "SELECT * FROM payment WHERE finished_date = '2013-5-23';"; */
 
 $result = mysql_query($query);
 
