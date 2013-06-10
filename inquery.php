@@ -1,8 +1,5 @@
 <?php
 
-# test
-
-error_reporting(E_ALL);
 error_reporting(E_ALL);
 
 function die_with_error($error) {
