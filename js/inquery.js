@@ -4,6 +4,22 @@
         auditor_inspect();
     });
 
+    var startDateTextBox = $('#starttime');
+    var endDateTextBox = $('#endtime');
+
+    startDateTextBox.datetimepicker();
+    endDateTextBox.datetimepicker();
+
+    function format_date(d) {
+        var cur_date = d.getDate();
+        var cur_month = d.getMonth() + 1;
+        var cur_year = d.getFullYear();
+        var cur_hour = d.getHours();
+        var cur_minute = d.getMinutes();
+        var cur_second = d.getSeconds();
+
+        return cur_year + '-' + cur_month + '-' + cur_date + ' ' + cur_hour + ':' + cur_minute + ':' + cur_second;
+    }
 
     function auditor_inspect() {
 
@@ -11,10 +27,18 @@
 
         var buyer = $('input[name="buyer"]').val();
         var bound = $('input[name="bound"]:checked').val();
+        var startime = '';
+        var endtime = '';
+        if (startDateTextBox.val() != '') {
+            startime = format_date(startDateTextBox.datetimepicker('getDate'));
+        }
+        if (endDateTextBox.val() != '') {
+            endtime = format_date(endDateTextBox.datetimepicker('getDate'));
+        }
 
         jQuery.ajax({
             url: url,
-            data: {buyer: buyer, bound : bound},
+            data: {buyer: buyer, bound : bound, st: startime, et : endtime},
             dataType: 'json',
             success: order_show
         });

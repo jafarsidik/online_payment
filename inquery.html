@@ -5,12 +5,17 @@
     <title>订单查询</title>
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
-
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-timepicker-addon.css">
     <style>
       body {
       padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
+    <script type="text/javascript" src="js/jquery.js"></script> 
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+
     <body>
 
       <div class="navbar navbar-inverse navbar-fixed-top">
@@ -42,13 +47,13 @@
 
           <form>
             <fieldset>
-              <legend>多条件查询(完善中...)</legend>
-              <p>
+              <legend>多条件查询</legend>
+              <div>
                 <label>用户:</label>
                 <input type="text" name="buyer" placeholder="输入用户">
-              </p>
+              </div>
 
-              <p>
+              <div>
                 <label>选择待查询的交易金额(以元为单位):</label>
                 <label class="checkbox inline">
                   <input type="radio" name="bound" value="0"> 50以下
@@ -66,8 +71,16 @@
                 <label class="checkbox inline">
                   <input type="radio" name="bound" value="6"> 10000以上
                 </label>
-              </p>
-
+              </div>
+              <div>
+                  <label>按时间查询</label>
+                  <label>
+                    cong <input type="text" name="starttime" id="starttime">
+                  </label>
+                  <label>
+                    dao <input type="text" name="endtime" id="endtime">
+                  </label>
+              </div>
               <button type="submit" class="btn" id="query">提交</button>
             </fieldset>
           </form>
@@ -81,7 +94,8 @@
         </div>
 
       </div> <!-- /container -->
-      <script type="text/javascript" src="js/jquery.js"></script>
+
       <script type="text/javascript" src="js/inquery.js"></script>
+      
     </body>
 </html>

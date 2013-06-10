@@ -11,11 +11,14 @@ function die_with_error($error) {
 }
 
 
-if (!isset($_GET["bound"]) || !isset( $_GET['buyer']))
+if (!isset($_GET["bound"]) || !isset($_GET['buyer']) 
+  || !isset($_GET['st']) || !isset($_GET['et']))
   die_with_error("invalid parameters");
 
 $bound = $_GET["bound"];
 $buyer = $_GET['buyer'];
+$st = $_GET['st'];
+$et = $_GET['et'];
 
 switch ($bound) {
   case '0':
@@ -66,12 +69,19 @@ mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
 if ($upper_bound) {
-  $query = "select * from ordered where buyer_id like '%" . $buyer ."%' and final_price >= " . $lower_bound . " and final_price <=" . $upper_bound . " ;";
+  $query = "select * from ordered where buyer_id like '%" . $buyer ."%' and final_price >= " . $lower_bound . " and final_price <=" . $upper_bound;
 } else {
-    $query = "select * from ordered where buyer_id like '%" . $buyer ."%' and final_price >= " . $lower_bound . " ;";
+    $query = "select * from ordered where buyer_id like '%" . $buyer ."%' and final_price >= " . $lower_bound;
 }
 
-$result = mysql_query($query);
+if ($st) {
+  $query = $query . " and order_date >= '" . $st . "'";
+}
+if ($et) {
+  $query = $query . " and order_date <= '" . $et . "'"; 
+}
+
+$result = mysql_query($query. " ;");
 
 if (! $result)
   die_with_error(mysql_error());
