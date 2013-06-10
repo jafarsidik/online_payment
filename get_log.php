@@ -2,8 +2,8 @@
 
 function die_with_error($error) {
   $ret = array(
-	"status" => "Failed",
-	"error" => $error
+    "status" => "Failed",
+    "error" => $error
   );
   die(json_encode($ret));
 }
@@ -20,10 +20,8 @@ mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
 
-$query = sprintf("SELECT * FROM payment WHERE finished_date = '%s';",
-				 mysql_real_escape_string($date));
-
-/* $query = "SELECT * FROM payment WHERE finished_date = '2013-5-23';"; */
+$query = sprintf("SELECT * FROM ordered WHERE payment_date = '%s';",
+                 mysql_real_escape_string($date));
 
 $result = mysql_query($query);
 
@@ -35,13 +33,13 @@ while($row = mysql_fetch_assoc($result)){
 
   array_push($result_array,
              array(
-			   "order_id" => $row['order_id'],
-			   "buyer_id" => $row['buyer_id'],
-			   "seller_id" => $row['seller_id'],
-			   "status" => $row['status'],
-			   "total_amount" => $row['money_amount'],
-			   "trade_time" => $row['finished_date']
-			 ));
+               "order_id" => $row['order_id'],
+               "buyer_id" => $row['buyer_id'],
+               "seller_id" => $row['seller_id'],
+               "status" => $row['status'],
+               "total_amount" => $row['payment_price'],
+               "trade_time" => $row['payment_date']
+             ));
 
 }
 

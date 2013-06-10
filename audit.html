@@ -44,10 +44,11 @@
           <br/>
           <p>系统每日自动对账审计，同时点击按钮提供手动对账查询功能</p>
           <br/>
-          <a class="btn btn-primary btn-large" id="audit">
+          <progress id="prog" value="0" max="100"></progress>
+          <a class="btn btn-primary btn-large" id="audit" >
             对账
           </a>
-
+          <div id="numValue">0%</div>
         </div>
 
         <div id="result">
@@ -60,13 +61,38 @@
       <script type="text/javascript" src="js/jquery.js"></script>
       <script type="text/javascript" src="js/audit.js"></script>
       <script type="text/javascript">
+        var currProgress = 0;
+        var done = false;
+        var total = 100;
         //  automatic auditing
-        auditor_inspect();
+        // auditor_inspect();
 
         jQuery('#audit').click(function() {
             // jQuery('#result').addClass("alert alert-block");
-            auditor_inspect();
+            startProgress ();
+
+            var timeout = window.setTimeout(function () {auditor_inspect();},
+                                            2300);
         });
+
+        function startProgress () {
+            var prBar = document.getElementById("prog");
+            var startButt = document.getElementById("audit");
+            var val = document.getElementById("numValue");
+            audit.disabled = true;
+            prBar.value = currProgress;
+            val.innerHTML = Math.round((currProgress/total)*100) + "%";
+            currProgress++;
+
+            if (currProgress>100) {done = true };
+            if (!done) {
+                setTimeout("startProgress()", 20);
+            } else {
+                document.getElementById("audit").disabled = false;
+                done = false;
+                currProgress = 0;
+            }
+        }
 
       </script>
     </body>

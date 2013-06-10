@@ -2,7 +2,7 @@ function query_log(date) {
 
     var url = './get_log.php';
     var parameter = {date: date};
-
+    // document.write(date);
     jQuery.ajax({
         url: url,
         data: parameter,
