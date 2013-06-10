@@ -2,9 +2,9 @@
 
 function die_with_error($error) {
   $ret = array(
-      "status" => "Failed",
-      "error" => $error
-               );
+    "status" => "Failed",
+    "error" => $error
+  );
   die(json_encode($ret));
 }
 
@@ -30,8 +30,8 @@ mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());
 mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
-$query = "select final_price as price, money_amount as money, ordered.order_id from ordered,
-payment where ordered.order_id = payment.order_id and payment.status = 'succeed';";
+$query = "select final_price as price, payment_price as money, order_id
+from ordered";
 
 $result = mysql_query($query);
 
@@ -43,16 +43,16 @@ while ($row = mysql_fetch_assoc($result)) {
 
   array_push($result_array,
              array(
-                 "price" => $row['price'],
-                 "money" => $row['money'],
-                 "order_id" => $row['order_id']
-                   ));
+               "price" => $row['price'],
+               "money" => $row['money'],
+               "order_id" => $row['order_id']
+             ));
 }
 
 
 $ret = array(
-    "status" => "OK",
-    "data" => $result_array
-             );
+  "status" => "OK",
+  "data" => $result_array
+);
 die(json_encode($ret));
 ?>
