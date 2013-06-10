@@ -8,7 +8,8 @@ function die_with_error($error) {
   die(json_encode($ret));
 }
 
-$date = $_GET["date"];
+$date1 = $_GET["date1"];
+$date2 = $_GET["date2"];
 
 $hostname = 'localhost';
 $username = 'jeremy';
@@ -20,8 +21,8 @@ mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
 
-$query = sprintf("SELECT * FROM ordered WHERE payment_date = '%s';",
-                 mysql_real_escape_string($date));
+$query = sprintf("SELECT * FROM ordered WHERE payment_date >= '%s' and payment_date <= '%s';",
+                 mysql_real_escape_string($date1), mysql_real_escape_string($date2));
 
 $result = mysql_query($query);
 

@@ -43,10 +43,11 @@
         <div class="hero-unit">
           <h1>提取日志</h1>
           <br />
-          <p>选择您想要的日期</p>
+          <p>选择您想要的日期间隔</p>
           <p>
             <label>
-              <input type="date" id="log_date"/>
+              <input type="date" id="log_date1"/>
+              <input type="date" id="log_date2"/>
             </label>
             <button class="btn btn-large btn-primary" type="button" id="log">提交</button>
             <button class="btn btn-large btn-primary" type="button" id="log">导出</button>
@@ -67,8 +68,9 @@
       <script type="text/javascript">
 
         jQuery('#log').click(function() {
-            var log_date = jQuery("#log_date").val();
-            query_log(log_date);
+            var log_date1 = jQuery("#log_date1").val();
+            var log_date2 = jQuery("#log_date2").val();
+            query_log(log_date1, log_date2);
         });
 
       </script>

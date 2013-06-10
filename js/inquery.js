@@ -17,8 +17,8 @@
         var cur_hour = d.getHours();
         var cur_minute = d.getMinutes();
         var cur_second = d.getSeconds();
-
-        return cur_year + '-' + cur_month + '-' + cur_date + ' ' + cur_hour + ':' + cur_minute + ':' + cur_second;
+        var time = cur_year + '-' + cur_month + '-' + cur_date + ' ' + cur_hour + ':' + cur_minute + ':' + cur_second;
+        return time;
     }
 
     function auditor_inspect() {
