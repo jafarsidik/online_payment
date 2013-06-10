@@ -53,7 +53,6 @@
 
         <div id="result">
           <table class="table" id="order_table">
-
           </table>
         </div>
 
@@ -65,10 +64,12 @@
         var done = false;
         var total = 100;
         //  automatic auditing
-        // auditor_inspect();
+        auditor_inspect();
 
         jQuery('#audit').click(function() {
-            // jQuery('#result').addClass("alert alert-block");
+
+            jQuery("#result").removeClass();
+            jQuery("#order_table").empty();
             startProgress ();
 
             var timeout = window.setTimeout(function () {auditor_inspect();},

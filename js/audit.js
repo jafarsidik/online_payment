@@ -14,7 +14,6 @@ function audit_check(data, status, xhr) {
     if (data['status'] != 'OK')
         return;
 
-    jQuery("#order_table").empty();
     jQuery("#result").addClass("well");
     var id, html;
 
