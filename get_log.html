@@ -50,7 +50,7 @@
               <input type="date" id="log_date2"/>
             </label>
             <button class="btn btn-large btn-primary" type="button" id="log">提交</button>
-            <button class="btn btn-large btn-primary" type="button" id="log">导出</button>
+            <button class="btn btn-large btn-primary" type="button" id="export">导出</button>
           </p>
           <br />
           <div id="result">
@@ -70,7 +70,13 @@
         jQuery('#log').click(function() {
             var log_date1 = jQuery("#log_date1").val();
             var log_date2 = jQuery("#log_date2").val();
-            query_log(log_date1, log_date2);
+            query_log(log_date1, log_date2, 0);
+        });
+
+        jQuery('#export').click(function() {
+            var log_date1 = jQuery("#log_date1").val();
+            var log_date2 = jQuery("#log_date2").val();
+            query_log(log_date1, log_date2, 1);
         });
 
       </script>

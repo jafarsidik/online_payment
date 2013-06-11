@@ -1,11 +1,10 @@
-function query_log(first_date, second_date) {
+function query_log(first_date, second_date, cond) {
 
     var url = './get_log.php';
     var date1 = first_date + ' 00:00:00';
     var date2 = second_date + ' 23:59:59';
 
-
-    var parameter = {date1: date1, date2: date2};
+    var parameter = {date1: date1, date2: date2, cond: cond};
 
     jQuery.ajax({
         url: url,

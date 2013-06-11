@@ -10,6 +10,7 @@ function die_with_error($error) {
 
 $date1 = $_GET["date1"];
 $date2 = $_GET["date2"];
+$cond = $_GET["cond"];
 
 $hostname = 'localhost';
 $username = 'jeremy';
@@ -43,6 +44,16 @@ while($row = mysql_fetch_assoc($result)){
              ));
 
 }
+
+/* export */
+if ($cond == 1) {
+  $file = 'export.txt';
+  foreach ($result_array as $value) {
+    file_put_contents($file ,$value, FILE_APPEND);
+  }
+  exit(1);
+}
+
 
 $ret = array(
   "status" => "OK",

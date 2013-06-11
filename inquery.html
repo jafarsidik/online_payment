@@ -11,6 +11,19 @@
       body {
       padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+      #inquery {
+        margin-bottom: 20px;
+      }
+      #user, #money, #time {
+        margin-bottom: 20px;
+        color: #888;
+      }
+      input[type=radio]{
+        width:10px;
+        height:15px;
+        margin-bottom: 5px;
+      }
+
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -42,19 +55,19 @@
       <div class="container">
 
         <div class="hero-unit">
-          <h1>查询</h1>
-          <!-- <p>Tagline</p> -->
-
+          <h1 id="inquery">查询</h1>
           <form>
             <fieldset>
-              <legend>多条件查询</legend>
-              <div>
-                <label>用户:</label>
-                <input type="text" name="buyer" placeholder="输入用户">
+
+              <div id="user">
+                <legend>用户:</legend>
+                <label>
+                  用 户 名 <input type="text" name="buyer" placeholder="">
+                </label>
               </div>
 
-              <div>
-                <label>选择待查询的交易金额(以元为单位):</label>
+              <div id="money">
+                <legend>选择待查询的交易金额(以元为单位):</legend>
                 <label class="checkbox inline">
                   <input type="radio" name="bound" value="0"> 50以下
                 </label><label class="checkbox inline">
@@ -72,8 +85,9 @@
                   <input type="radio" name="bound" value="6"> 10000以上
                 </label>
               </div>
-              <div>
-                  <label>按时间查询</label>
+
+              <div id="time">
+                  <legend>按时间查询</legend>
                   <label>
                     开始日期 <input type="text" name="starttime" id="starttime">
                   </label>
@@ -81,7 +95,7 @@
                     终止日期 <input type="text" name="endtime" id="endtime">
                   </label>
               </div>
-              <button type="submit" class="btn" id="query">提交</button>
+              <button type="button" class="btn btn-large btn-primary" id="query">提交</button>
             </fieldset>
           </form>
 
