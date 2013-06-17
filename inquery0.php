@@ -1,3 +1,14 @@
+<?php
+//定义个常量，用来授权调用includes里面的文件
+define('IN_TG',true);
+//定义个常量，用来指定本页的内容
+define('SCRIPT','inquery0');
+//引入公共文件
+require dirname(__FILE__).'/includes/common.inc.php';
+//User Access Control 用户权限控制
+_access();
+?>
+
 <!DOCTYPE html>
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,10 +53,10 @@
             <a class="brand" href="./index.html">A4</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li><a href="./audit.html">对账审计</a></li>
+                <li><a href="./audit0.php">对账审计</a></li>
                 <!-- <li><a href="./complain.html">处理投诉</a></li> -->
-                <li><a href="./get_log.html">提取日志</a></li>
-                <li class="active"><a href="./inquery.html">查询</a></li>
+                <li><a href="./get_log0.php">提取日志</a></li>
+                <li class="active"><a href="./inquery0.php">查询</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
