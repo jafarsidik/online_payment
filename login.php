@@ -13,7 +13,7 @@ define('SCRIPT','login');
 //引入公共文件
 require dirname(__FILE__).'/includes/common.inc.php';
 //登录状态
-_login_state(); 
+_login_state();
 
 //开始处理登录状态
 if ($_GET['action'] == 'login') {
@@ -91,21 +91,43 @@ if ($_GET['action'] == 'login') {
 
       <div class="container">
         <div id="login" class="hero-unit">
-          <h1>登录</h1>
-          <form method="post" name="login" action="login.php?action=login">
-            <dl>
-              <dt></dt>
-              <dd><span>用户ID : </span><input type="text" name="id" class="text" /></dd>
-              <dd><span>密  码 : </span><input type="password" name="password" class="text" /></dd>
-              <dd><span>验证码 : </span><input type="text" name="code" class="text code"  /> 
-                          <img src="code.php" id="code" />(点击图片刷新)</dd>
-              <dd><button type="submit" class="btn btn-large btn-primary" id="query">登录</button></dd>
 
-            </dl>
+          <form class="form-horizontal" method="post" name="login" action="login.php?action=login">
+
+            <div class="control-group">
+              <label class="control-label" for="inputEmail"><h2>登录</h2></label>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputEmail">用户名</label>
+              <div class="controls">
+                <input type="text" name="id" id="inputEmail" placeholder="用户名">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputPassword">密码</label>
+              <div class="controls">
+                <input type="password" name="password" id="inputPassword" placeholder="密码">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">验证码</label>
+              <div class="controls">
+                <input type="text"  name="code" placeholder="验证码">
+                <img src="code.php" id="code" /> (点击图片刷新)
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn btn-large btn-primary" id="query">登录</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
 
 </body>
 </html>
-
