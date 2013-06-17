@@ -79,8 +79,11 @@ _access();
                   终止日期 <input type="text" name="endtime" id="endtime">
                 </label>
               </div>
-              <button type="button" class="btn btn-large btn-primary" id="log">提交</button>
-              <button class="btn btn-large btn-primary" type="button" id="export">导出</button>
+              <button type="button" class="btn btn-large btn-primary"
+              id="log">提交</button>
+              <button class="btn btn-large btn-primary" type="button"
+              id="export">导出</button>
+
             </fieldset>
           </form>
 
@@ -93,7 +96,7 @@ _access();
         </div>
 
       </div> <!-- /container -->
+      <script type="text/javascript" src="js/jquery.generateFile.js"></script>
       <script type="text/javascript" src="js/log.js"></script>
-
     </body>
 </html>

@@ -1,14 +1,12 @@
 (function($){
     $('#log').click(function(e) {
         e.preventDefault();
-        var cond =0;
-        query_log(cond);
+        query_log(1);
     });
 
     $('#export').click(function(e) {
         e.preventDefault();
-        var cond =1;
-        query_log(cond);
+        query_log(2);
     });
 
     var startDateTextBox = $('#starttime');
@@ -31,23 +29,59 @@
     function query_log(cond) {
 
         var url = './get_log.php';
-
-
         var startime = '';
         var endtime = '';
+
         if (startDateTextBox.val() != '') {
             startime = format_date(startDateTextBox.datetimepicker('getDate'));
         }
         if (endDateTextBox.val() != '') {
             endtime = format_date(endDateTextBox.datetimepicker('getDate'));
         }
-        var parameter = {date1: startime, date2: endtime, cond: cond};
-        jQuery.ajax({
-            url: url,
-            data: parameter,
-            dataType: 'json',
-            success: get_log
+        var parameter = {date1: startime, date2: endtime};
+
+        if (cond == 1) {
+            jQuery.ajax({
+                url: url,
+                data: parameter,
+                dataType: 'json',
+                success: get_log
+            });
+        }
+        else if (cond == 2) {
+            jQuery.ajax({
+                url: url,
+                data: parameter,
+                dataType: 'json',
+                success: export_log
+            });
+        }
+
+    }
+
+    function export_log(data, status, xhr) {
+        if (data['status'] != 'OK')
+            return;
+
+        var id, contents="";
+        if (data['data'].length > 0) {
+            for (id in data['data']) {
+                contents += data['data'][id]['order_id'] + " " +
+                    data['data'][id]['buyer_id'] + " " + data['data'][id]['seller_id'] +
+                    " " + data['data'][id]['total_amount'] + " " + data['data'][id]['status'] +
+                    " " + data['data'][id]['trade_time'] + "\n";
+            }
+        }
+        else
+            return;
+
+        // console.log(contents);
+        $.generateFile({
+            filename    : 'export.txt',
+            content     : contents,
+            script      : 'download.php'
         });
+
     }
 
     function get_log(data, status, xhr) {

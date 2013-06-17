@@ -91,12 +91,11 @@ if ($_GET['action'] == 'login') {
 
       <div class="container">
         <div id="login" class="hero-unit">
+          <header>
+            <h2>登录</h2>
+          </header>
 
           <form class="form-horizontal" method="post" name="login" action="login.php?action=login">
-
-            <div class="control-group">
-              <label class="control-label" for="inputEmail"><h2>登录</h2></label>
-            </div>
 
             <div class="control-group">
               <label class="control-label" for="inputEmail">用户名</label>
