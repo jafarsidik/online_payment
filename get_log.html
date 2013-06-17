@@ -3,17 +3,31 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>提取日志</title>
-
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-timepicker-addon.css">
     <style>
       body {
       padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
-    </style>
+      #inquery {
+      margin-bottom: 20px;
+      }
+      #user, #money, #time {
+      margin-bottom: 20px;
+      color: #888;
+      }
+      input[type=radio]{
+      width:10px;
+      height:15px;
+      margin-bottom: 5px;
+      }
 
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
 
     <body>
 
@@ -41,18 +55,24 @@
       <div class="container">
 
         <div class="hero-unit">
-          <h1>提取日志</h1>
-          <br />
-          <p>选择您想要的日期间隔</p>
-          <p>
-            <label>
-              <input type="date" id="log_date1"/>
-              <input type="date" id="log_date2"/>
-            </label>
-            <button class="btn btn-large btn-primary" type="button" id="log">提交</button>
-            <button class="btn btn-large btn-primary" type="button" id="export">导出</button>
-          </p>
-          <br />
+          <h1 id="inquery">提取日志</h1>
+          <form>
+            <fieldset>
+
+              <div id="time">
+                <legend>选择想提取日志的日期间隔</legend>
+                <label>
+                  开始日期 <input type="text" name="starttime" id="starttime">
+                </label>
+                <label>
+                  终止日期 <input type="text" name="endtime" id="endtime">
+                </label>
+              </div>
+              <button type="button" class="btn btn-large btn-primary" id="log">提交</button>
+              <button class="btn btn-large btn-primary" type="button" id="export">导出</button>
+            </fieldset>
+          </form>
+
           <div id="result">
             <table class="table" id="log_table">
 
@@ -62,22 +82,7 @@
         </div>
 
       </div> <!-- /container -->
-
-      <script type="text/javascript" src="js/jquery.js"></script>
       <script type="text/javascript" src="js/log.js"></script>
-      <script type="text/javascript">
 
-        jQuery('#log').click(function() {
-            var log_date1 = jQuery("#log_date1").val();
-            var log_date2 = jQuery("#log_date2").val();
-            query_log(log_date1, log_date2, 0);
-        });
-
-        jQuery('#export').click(function() {
-            var log_date1 = jQuery("#log_date1").val();
-            var log_date2 = jQuery("#log_date2").val();
-            query_log(log_date1, log_date2, 1);
-        });
-
-      </script>
-</body></html>
+    </body>
+</html>
