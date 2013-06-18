@@ -22,15 +22,15 @@ function die_with_error($error) {
  */
 
 $hostname = 'localhost';
-$username = 'jeremy';
-$password = 'bbcc';
-$dbname = 'SE';
+$username = 'root';
+$password = 'root';
+$dbname = 'easypay';
 
 mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());
 mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
-$query = "select final_price as price, payment_price as money, order_id
+$query = "select Final_price as price, Payment_price as money, order_id
 from ordered";
 
 $result = mysql_query($query);

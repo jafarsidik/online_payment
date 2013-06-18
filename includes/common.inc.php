@@ -20,9 +20,9 @@ require ROOT_PATH.'includes/mysql.func.php';
 
 //数据库连接
 define('DB_HOST','localhost');
-define('DB_USER','jeremy');
-define('DB_PWD','bbcc');
-define('DB_NAME','SE');
+define('DB_USER','root');
+define('DB_PWD','root');
+define('DB_NAME','easypay');
 
 //初始化数据库
 _connect();   //连接MYSQL数据库

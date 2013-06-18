@@ -12,9 +12,9 @@ $date1 = $_GET["date1"];
 $date2 = $_GET["date2"];
 
 $hostname = 'localhost';
-$username = 'jeremy';
-$password = 'bbcc';
-$dbname = 'SE';
+$username = 'root';
+$password = 'root';
+$dbname = 'easypay';
 
 mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());
 mysql_select_db($dbname) or die_with_error(mysql_error());
@@ -35,10 +35,10 @@ while($row = mysql_fetch_assoc($result)){
   array_push($result_array,
              array(
                "order_id" => $row['order_id'],
-               "buyer_id" => $row['buyer_id'],
-               "seller_id" => $row['seller_id'],
-               "status" => $row['status'],
-               "total_amount" => $row['payment_price'],
+               "buyer_id" => $row['Buyer_id'],
+               "seller_id" => $row['Seller_id'],
+               "status" => $row['Status'],
+               "total_amount" => $row['Payment_price'],
                "trade_time" => $row['payment_date']
              ));
 

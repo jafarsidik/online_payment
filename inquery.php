@@ -60,18 +60,18 @@ default:
 }
 
 $hostname = 'localhost';
-$username = 'jeremy';
-$password = 'bbcc';
-$dbname = 'SE';
+$username = 'root';
+$password = 'root';
+$dbname = 'easypay';
 
 mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());
 mysql_select_db($dbname) or die_with_error(mysql_error());
 mysql_set_charset('utf8');
 
 if ($upper_bound) {
-  $query = "select * from ordered where buyer_id like '%" . $buyer ."%' and final_price >= " . $lower_bound . " and final_price <=" . $upper_bound;
+  $query = "select * from ordered where Buyer_id like '%" . $buyer ."%' and Final_price >= " . $lower_bound . " and Final_price <=" . $upper_bound;
 } else {
-  $query = "select * from ordered where buyer_id like '%" . $buyer ."%' and final_price >= " . $lower_bound;
+  $query = "select * from ordered where Buyer_id like '%" . $buyer ."%' and Final_price >= " . $lower_bound;
 }
 
 if ($st) {
@@ -94,16 +94,16 @@ while ($row = mysql_fetch_assoc($result)) {
 
                "order_id" => $row['order_id'],
                "order_date" => $row['order_date'],
-               "order_type" => $row['order_type'],
-               "goods_id" => $row['goods_id'],
-               "status" => $row['status'],
-               "single_price" => $row['single_price'],
-               "final_price" => $row['final_price'],
-               "discount" => $row['discount'],
-               "amount" => $row['amount'],
-               'buyer_id' => $row['buyer_id'],
-               "address" => $row['address'],
-               "seller_id" => $row['seller_id']
+               "order_type" => $row['Type'],
+               "goods_id" => $row['Goods_id'],
+               "status" => $row['Status'],
+               "single_price" => $row['Single_price'],
+               "final_price" => $row['Final_price'],
+               "discount" => $row['Discount'],
+               "amount" => $row['Amount'],
+               'buyer_id' => $row['Buyer_id'],
+               "address" => $row['Address'],
+               "seller_id" => $row['Seller_id']
              ));
 }
 
