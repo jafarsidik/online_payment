@@ -36,7 +36,7 @@ _access();
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="./index.html">A4</a>
+            <a class="brand" href="./index.html">易付通</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li  class="active"><a href="./audit0.php">对账审计</a></li>
