@@ -11,9 +11,9 @@ function die_with_error($error) {
 $date1 = $_GET["date1"];
 $date2 = $_GET["date2"];
 
-$hostname = 'localhost';
-$username = 'root';
-$password = 'root';
+$hostname = '222.205.48.145';
+$username = 'test';
+$password = 'test';
 $dbname = 'easypay';
 
 mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());

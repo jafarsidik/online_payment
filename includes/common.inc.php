@@ -19,9 +19,9 @@ require ROOT_PATH.'includes/global.func.php';
 require ROOT_PATH.'includes/mysql.func.php';
 
 //数据库连接
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PWD','root');
+define('DB_HOST','222.205.48.145');
+define('DB_USER','test');
+define('DB_PWD','test');
 define('DB_NAME','easypay');
 
 //初始化数据库

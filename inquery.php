@@ -59,9 +59,9 @@ default:
   break;
 }
 
-$hostname = 'localhost';
-$username = 'root';
-$password = 'root';
+$hostname = '222.205.48.145';
+$username = 'test';
+$password = 'test';
 $dbname = 'easypay';
 
 mysql_connect($hostname, $username, $password) or die_with_error(mysql_error());
