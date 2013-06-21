@@ -41,12 +41,14 @@ if (! $result)
 $result_array = array();
 while ($row = mysql_fetch_assoc($result)) {
 
+  if ($row['price'] != $row['money']) {
   array_push($result_array,
              array(
                "price" => $row['price'],
                "money" => $row['money'],
                "order_id" => $row['order_id']
              ));
+  }
 }
 
 

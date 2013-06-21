@@ -34,8 +34,8 @@ function audit_check(data, status, xhr) {
     }
     else {
         html = "<caption><h3>审计通过</h3></caption>";
-        // jQuery("#log_table").addClass("table-hover");
-        jQuery("#log_table").append(html);
+
+        jQuery("#order_table").append(html);
     }
 
 }
